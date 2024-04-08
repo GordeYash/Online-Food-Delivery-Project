@@ -1,0 +1,24 @@
+Online Food Ordering System
+
+
+Project Run :
+
+1. Configure Apache Tomcat
+2. Add run Time environment to project
+3. Run on server
+
+DataBase :zomato
+
+1. create table user_info(uname varchar(255),email varchar(255),no varchar(255),address varchar(255),pass varchar(255),uid serial primary key);
+
+2. create table admin(aid serial primary key,name varchar(255),email varchar(255),pass varchar(255));
+
+3. create table deliveryboy(did serial primary key,name varchar(255),email varchar(255),address varchar(255),phno varchar(255),pass varchar(255));
+
+4. create table feedback (name varchar(255),email varchar(255),phno varchar(255),feedback varchar(255));
+
+5. create table restorunt_info(rname varchar(255),address varchar(255),rno varchar(255),email varchar(255),pass varchar(255),rid serial primary key);
+
+6. create table resto_menu(mname varchar(255),price varchar(255),description varchar(255),type varchar(255),resto_id int  references restorunt_info(rid),mid serial primary key,image varchar(255),discount int);
+
+7. create table orders(cid varchar(255),rid int references restorunt_info(rid),date date,mid int references resto_menu(mid),oid serial primary key,status varchar(255),boyid int references deliveryboy(did));
